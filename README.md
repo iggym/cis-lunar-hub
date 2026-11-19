@@ -18,6 +18,12 @@ Then use the atlas to inspect the underlying infrastructure:
 - **Mission Roadmap:** Scrub from 2025 through 2040+ and filter by milestone status. Review CLPS deliveries, Artemis flight and landing plans, the Gateway assembly pause, and possible future depot and permanent habitat milestones.
 - **Image Archive:** NASA Apollo photography, Artemis II’s Earthset photograph, and an LRO-based polar illumination visualization are embedded for offline use, with links to their originals and procedural fallbacks if decoding fails. The photorealistic depot, relay, and surface scenes are labeled concept illustrations, not flight imagery.
 
+## Field notes: six views of cislunar space
+
+Open **Field notes** in the main navigation to explore research methods, science, technology, economics, demographics, and politics. Each briefing has three selectable evidence cards with primary sources and notes about what the data does and does not establish. The briefings distinguish findings from demonstrations, purchase orders from ceilings, lunar visitors from permanent residents, and political commitments from legal rights.
+
+Each topic has two original Atlas quotes. Use **Next quote** to switch, then **Share quote** to copy an attributed post, share through X, Bluesky, WhatsApp, or the device share menu, or download a 1080 × 1080 PNG for Instagram and other image-first platforms. On a public deployment, shares can link straight to the briefing, and LinkedIn and Facebook link-sharing options appear. Text copying and PNG generation also work offline; the Atlas does not post automatically or contact social platforms until you follow a share link.
+
 ## Run locally or deploy to GitHub Pages
 
 **Offline:** Download or clone the repository and open `index.html` in a current browser. The interface, data, font, and images are embedded. An internet connection is needed only to open external references.
