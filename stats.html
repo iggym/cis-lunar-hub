@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Public traffic stats for Cislunar Atlas.">
+<title>Site stats — Cislunar Atlas</title>
+<style>
+:root{color-scheme:dark;--void:#000;--text:#efeeea;--muted:#a5a7a4;--dim:#858985;--line:#242624;--panel:#101210;--orange:#ff4f00;--green:#00ff66;--cyan:#00e5ff;--mono:ui-monospace,'SFMono-Regular',Consolas,monospace;--sans:'Space Grotesk',system-ui,sans-serif}
+*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:inherit;text-decoration:none}button,a{color:inherit}
+a:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}
+h1,h2,p{margin:0}
+.wrap{width:min(100% - 36px,1280px);margin-inline:auto}
+.mono,.range-bar a,th,.header-nav,.header-status,.footer{font-family:var(--mono)}
+.skip{position:absolute;left:16px;top:-100px;background:var(--text);color:#000;padding:10px;z-index:10}.skip:focus{top:12px}
+.site-header{position:sticky;top:0;z-index:5;background:#080908e8;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.header-inner{display:flex;min-height:62px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:8px}
+.brand{display:flex;gap:10px;align-items:center;font-size:15px;font-weight:700;letter-spacing:.08em;white-space:nowrap}
+.brand svg{color:var(--orange);width:27px;height:27px}
+.brand em{font-style:normal;color:#b8b9b5}
+.header-nav{display:flex;gap:18px;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.header-nav a{padding:10px 3px;white-space:nowrap}
+.header-nav a:hover,.header-nav a[aria-current]{color:var(--text)}
+.header-nav a[aria-current]{box-shadow:inset 0 -2px var(--orange)}
+.header-status{display:flex;align-items:center;gap:8px;color:var(--green);font-size:10px;letter-spacing:.08em;white-space:nowrap}
+.dot{width:7px;height:7px;background:currentColor;border-radius:50%;display:inline-block;box-shadow:0 0 13px currentColor;flex:none}
+main{padding:42px 0 72px}
+.eyebrow{color:var(--orange);display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;margin-bottom:10px}
+.eyebrow::before{content:"";width:16px;height:1px;background:currentColor}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);letter-spacing:-.05em;line-height:.95;font-weight:700}
+h1 span{color:var(--orange)}
+.lede{margin:14px 0 22px;color:var(--muted);max-width:36em}
+.range-bar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px}
+.range-bar a{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.range-bar a.on,.range-bar a:hover{background:var(--orange);color:#170700;border-color:var(--orange)}
+.kpi{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 22px}
+.kpi div{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 18px;min-width:140px}
+.kpi b{display:block;font-size:28px;letter-spacing:-.03em}
+.kpi span{color:var(--dim);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.panel{border:1px solid var(--line);border-radius:8px;background:var(--panel);padding:14px 16px;margin:0 0 16px;overflow:auto}
+.panel h2{font-size:13px;font-weight:700;margin:0 0 8px;color:#cfd3d0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+table{width:100%;border-collapse:collapse}th,td{padding:6px 4px;border-bottom:1px solid #1c1e1c;text-align:left;font-size:13px;word-break:break-word}
+th{color:var(--dim);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.num{text-align:right;white-space:nowrap}
+.empty{color:var(--muted);padding:8px 0 24px}
+.err{color:#ff7a7a}
+.spark{width:100%;max-width:900px;height:auto;display:block}
+.spark rect{fill:var(--orange)}
+.spark text{fill:var(--dim);font-size:11px}
+.footer{padding:20px 0 25px;border-top:1px solid var(--line)}
+.footer-inner{display:flex;justify-content:space-between;gap:9px;flex-wrap:wrap;align-items:center;color:var(--muted);font-size:10px;line-height:1.5;letter-spacing:.05em}
+.footer a{color:#ff9c73}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to stats</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="./" aria-label="Cislunar Atlas home">
+      <svg class="icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" aria-hidden="true"><circle cx="16" cy="16" r="8"/><ellipse cx="16" cy="16" rx="15" ry="5" transform="rotate(-36 16 16)"/><path d="M16 1v4m0 22v4M1 16h4m22 0h4"/></svg>
+      <span>CISLUNAR <em>ATLAS</em></span>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="./">Atlas</a>
+      <a href="stats.html" aria-current="page">Stats</a>
+    </nav>
+    <div class="header-status mono"><span class="dot"></span> SYSTEM ONLINE</div>
+  </div>
+</header>
+<main class="wrap" id="main">
+  <p class="eyebrow">Traffic</p>
+  <h1>Site <span>stats</span></h1>
+  <p class="lede">Page views and visits for this atlas, from Cloudflare Web Analytics.</p>
+  <div class="range-bar" id="ranges" aria-label="Date range"></div>
+  <p class="empty" id="status">Loading…</p>
+  <div id="dashboard" hidden>
+    <div class="kpi">
+      <div><b id="k-views">0</b><span>Page views</span></div>
+      <div><b id="k-visits">0</b><span>Visits</span></div>
+    </div>
+    <section class="panel">
+      <h2>Daily page views</h2>
+      <div id="chart"></div>
+    </section>
+    <div class="grid">
+      <section class="panel">
+        <h2>Top pages</h2>
+        <table><thead><tr><th>Page</th><th class="num">Views</th></tr></thead><tbody id="pages-body"></tbody></table>
+      </section>
+      <section class="panel">
+        <h2>Referrers</h2>
+        <table><thead><tr><th>Referrer</th><th class="num">Views</th></tr></thead><tbody id="refs-body"></tbody></table>
+      </section>
+      <section class="panel">
+        <h2>Countries</h2>
+        <table><thead><tr><th>Country</th><th class="num">Views</th></tr></thead><tbody id="countries-body"></tbody></table>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>CISLUNAR ATLAS &nbsp;/&nbsp; PUBLIC TRAFFIC TOTALS</span>
+    <span><a href="./">BACK TO ATLAS ↑</a></span>
+  </div>
+</footer>
+<script>
+
+const API = "https://cislunar-stats.iggy-mw.workers.dev/api/stats";
+const SITE = "cis-lunar-hub";
+const ranges = [
+  [1, "24h"],
+  [7, "7 days"],
+  [30, "30 days"],
+  [90, "90 days"]
+];
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => Number(n || 0).toLocaleString("en-US");
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+function bars(days) {
+  if (!days.length) return "";
+  const max = Math.max(...days.map((d) => d.pageviews), 1);
+  const w = 720, h = 120, bw = w / days.length;
+  const rects = days.map((d, i) => {
+    const bh = Math.max(1, (d.pageviews / max) * h);
+    return `<rect x="${(i * bw + 1).toFixed(2)}" y="${(h - bh).toFixed(2)}" width="${Math.max(1, bw - 2).toFixed(2)}" height="${bh.toFixed(2)}"><title>${esc(d.date)}: ${fmt(d.pageviews)} page views</title></rect>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${w} ${h + 18}" class="spark" role="img" aria-label="Daily page views">${rects}<text x="0" y="${h + 14}">${esc(days[0].date)}</text><text x="${w}" y="${h + 14}" text-anchor="end">${esc(days[days.length - 1].date)}</text></svg>`;
+}
+
+function rows(items, nameFn) {
+  if (!items.length) return `<tr><td colspan="2" class="muted">None in this range</td></tr>`;
+  return items.map((item) => `<tr><td>${esc(nameFn(item))}</td><td class="num">${fmt(item.pageviews)}</td></tr>`).join("");
+}
+
+async function load(days) {
+  const status = $("status");
+  const dash = $("dashboard");
+  status.hidden = false;
+  status.className = "empty";
+  status.textContent = "Loading…";
+  dash.hidden = true;
+  document.querySelectorAll(".range-bar a").forEach((a) => {
+    a.classList.toggle("on", Number(a.dataset.days) === days);
+  });
+  try {
+    const r = await fetch(`${API}?site=${encodeURIComponent(SITE)}&days=${days}`);
+    if (!r.ok) throw new Error("bad status");
+    const data = await r.json();
+    const empty = !data.pageviews && !data.visits;
+    if (empty) {
+      status.textContent = "No visits recorded yet; data appears a few minutes after the first visits";
+      $("k-views").textContent = "0";
+      $("k-visits").textContent = "0";
+      $("chart").innerHTML = "";
+      $("pages-body").innerHTML = rows([], () => "");
+      $("refs-body").innerHTML = rows([], () => "");
+      $("countries-body").innerHTML = rows([], () => "");
+      return;
+    }
+    status.hidden = true;
+    dash.hidden = false;
+    $("k-views").textContent = fmt(data.pageviews);
+    $("k-visits").textContent = fmt(data.visits);
+    $("chart").innerHTML = bars(data.daily || []);
+    $("pages-body").innerHTML = rows(data.pages || [], (x) => x.path || "/");
+    $("refs-body").innerHTML = rows(data.referrers || [], (x) => x.referrer || "(direct / none)");
+    $("countries-body").innerHTML = rows(data.countries || [], (x) => x.country || "?");
+  } catch {
+    status.className = "empty err";
+    status.textContent = "Stats could not be loaded. Try again in a moment.";
+  }
+}
+
+$("ranges").innerHTML = ranges.map(([d, label]) =>
+  `<a href="?days=${d}" data-days="${d}">${label}</a>`
+).join("");
+$("ranges").addEventListener("click", (ev) => {
+  const a = ev.target.closest("a");
+  if (!a) return;
+  ev.preventDefault();
+  const days = Number(a.dataset.days);
+  const u = new URL(location.href);
+  u.searchParams.set("days", String(days));
+  history.replaceState(null, "", u);
+  load(days);
+});
+const initial = [1, 7, 30, 90].includes(Number(new URL(location.href).searchParams.get("days")))
+  ? Number(new URL(location.href).searchParams.get("days"))
+  : 7;
+load(initial);
+
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"bc1c0bc20ae642aaaed526b3de055796"}'></script>
+</body>
+</html>
